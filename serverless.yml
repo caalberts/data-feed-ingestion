@@ -1,0 +1,28 @@
+service: data-feed-ingestion
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  region: ap-southeast-1
+  profile: ${env:AWS_PROFILE}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:GetObject
+      Resource: "arn:aws:s3:::*"
+
+package:
+  include:
+    - handler.js
+    - node_modules/**
+  exclude:
+    - bin/**
+
+functions:
+  ingest:
+    handler: handler.ingest
+
+events:
+  - s3:
+    bucket: ${env:S3_BUCKET}
+    event: s3:ObjectCreated:*
