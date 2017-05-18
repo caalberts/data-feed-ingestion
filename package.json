@@ -1,0 +1,15 @@
+{
+  "name": "data-feed-ingestion",
+  "version": "1.0.0",
+  "description": "Spike to ingest Adobe Data Feed from S3 into RDB",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Albert Salim <albertlimca@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.52.0",
+    "bluebird": "^3.5.0"
+  }
+}
